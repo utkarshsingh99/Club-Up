@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Candidate Application</title>
+</head>
+<script>
+    var a = document.getElementById('message').innerText;
+    if (a === 'saved') {
+        toastr.success('Your profile was submitted. Best of luck!')
+    } else if (a !== 'nothing') {
+        toastr.error('Some error occured: ', a);
+    }
+</script>
+<body>
+    <div id="message" style="visibility: hidden;">
+    {{message}}
+    </div>
+    {{!-- <div>
+        <a class="btn btn-success" onclick="toastr.success('Hi! I am success message.');">Your profile was submitted!</a>
+        <!-- Error message -->
+        <a class="btn btn-danger" onclick="toastr.error('Hi! I am error message.');"></a>
+    </div> --}}
+    <div class="container" style="padding-top: 5%;">
+        <h2 style="text-align: center;">Get Into Club!</h2>
+        <h3 style="text-align: center;">Enter your details along with the club you want to enter into.</h3>
+    <form action="/postcandidate" method="POST" style="margin-top: 5%; padding-bottom: 10%;">
+        <div class="form-group">
+            <label for="username">Enter your name *</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter name" name="name" required="true">
+            
+            <label for="rollNumber">Enter your rollNumber *</label>
+            <input placeholder="Enter roll number" name="rollNumber" type="text" class="form-control" id="rollNumber" required="true">
+
+            <label for="mobile">Enter your mobile number *</label>
+            <input name="mobile" id="mobile" type="number" required class="form-control">
+
+            <label for="club">Enter your club *</label>
+            <input name="club" id="club" type="text" class="form-control">
+
+            <label for="branch">Enter your branch</label>
+            <input name="branch" id="branch" type="text" class="form-control">
+
+            <label for="exampleInputEmail1">Email address *</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+                name="email" required="true">
+                
+            <label for="skills">Enter your skills</label>
+            <textarea class="form-control" id="skills" name="skills" rows="3"></textarea>
+            
+            <label for="achievements">Enter your achievements</label>
+            <textarea class="form-control" id="achievements" name="Achievements" rows="3"></textarea>
+
+            <label for="Areas_of_Interest">Enter your Areas of Interest</label>
+            <textarea class="form-control" id="Areas_of_Interest" name="AreasOfInt" rows="3"></textarea>
+
+            <label for="ques1">Why should we select you?</label>
+            <textarea class="form-control" id="ques1" name="ques1" rows="3"></textarea>
+
+            <label for="ques2">What will you do for our club?</label>
+            <textarea class="form-control" id="ques2" name="ques2" rows="3"></textarea>
+
+            <label for="ques3">What are your expectations from us?</label>
+            <textarea class="form-control" id="ques3" name="ques3" rows="3"></textarea>
+
+            <label for="ques4">Do you prefer working independently or in a team?</label>
+            <textarea class="form-control" id="ques4" name="ques4" rows="3"></textarea>
+
+        </div>
+        {{!-- <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> --}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</body>
+</html>

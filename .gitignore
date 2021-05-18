@@ -1,0 +1,6 @@
+/node_modules
+/play
+package-lock.json
+fonts/
+.vscode/
+screenshots/
