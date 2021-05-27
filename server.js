@@ -14,6 +14,7 @@ var {authenticate} = require('./middleware/authenticate');
 var {fetchClubInfo} = require('./middleware/fetchClubInfo');
 var {sendMail} = require('./middleware/mail');
 var {makepdf} = require('./middleware/latex');
+var {signup} = require('./views/signup')
 
 const port = process.env.PORT || 3000;
 mongoose.Promise = global.Promise;
@@ -42,7 +43,8 @@ app.get('/signup', (req, res) => {
 app.post('/signup', (req, res) => {
   const { body } = req;
   const newClub = new Club(body);
-  return newClub.save().then(resu => res.send(resu)).catch(e => res.send(e));
+  newClub.save().then(res.redirect('/')).catch(e => res.send(e));
+  
 })
 
 app.get('/signedout', (req, res) => {
@@ -167,7 +169,7 @@ app.get('/pingcheck', (req, res) => {
   res.send(`Hello!`);
 })
 
-// LaTeX code by Kartikey
+
 app.get('/api/getpdf/:club/:id', (req, res) => {
   var club = req.params.club;
   var id = req.params.id;
